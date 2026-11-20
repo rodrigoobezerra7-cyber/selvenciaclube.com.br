@@ -1,0 +1,359 @@
+type Value = 
+ variant {
+   "bool": bool;
+   float: float64;
+   "int": int;
+   "nat": nat;
+   "null";
+   "text": text;
+ };
+type UserRole = 
+ variant {
+   admin;
+   guest;
+   user;
+ };
+type TrainingId = nat;
+type Training = 
+ record {
+   content: text;
+   id: TrainingId;
+   minPlanRank: nat;
+   summary: text;
+   title: text;
+ };
+type Timestamp = int;
+type SurvivalCard = 
+ record {
+   content: text;
+   id: ClanContentId;
+   minPlanRank: nat;
+   summary: text;
+   title: text;
+ };
+type SubscriptionStatus = 
+ variant {
+   active;
+   cancelled;
+   pending;
+ };
+type Subscription = 
+ record {
+   member: MemberId;
+   pendingPlan: opt PlanId;
+   planId: PlanId;
+   renewsAt: Timestamp;
+   startedAt: Timestamp;
+   status: SubscriptionStatus;
+ };
+type Result__1 = 
+ record {
+   hasMore: bool;
+   rows: vec vec Cell;
+ };
+type Result_9 = 
+ variant {
+   err: RecoveryError;
+   ok: Member;
+ };
+type Result_8 = 
+ variant {
+   err: ClanError;
+   ok: CommunityPost;
+ };
+type Result_7 = 
+ variant {
+   err: ClanError;
+   ok: EmergencyPlan;
+ };
+type Result_6 = 
+ variant {
+   err: ClanError;
+   ok: MemberKit;
+ };
+type Result_5 = 
+ variant {
+   err: ClanError;
+   ok: Course;
+ };
+type Result_4 = 
+ variant {
+   err: ClanError;
+   ok: SurvivalCard;
+ };
+type Result_3 = 
+ variant {
+   err: OrderError;
+   ok: Order;
+ };
+type Result_2 = 
+ variant {
+   err: MemberError;
+   ok: Member;
+ };
+type Result_10 = 
+ variant {
+   err: Error;
+   ok;
+ };
+type Result_1 = 
+ variant {
+   err: MembershipError;
+   ok: Subscription;
+ };
+type Result = 
+ variant {
+   err: RecoveryError;
+   ok;
+ };
+type RecoveryError = 
+ variant {
+   codeExpired;
+   emailFailed: text;
+   invalidCode;
+   invalidEmail;
+   noEmail;
+   notRegistered;
+   tooManyAttempts;
+ };
+type ProductId = nat;
+type ProductCategory = 
+ variant {
+   binoculos;
+   camisetas;
+   facas;
+   lanternas;
+ };
+type Product = 
+ record {
+   available: bool;
+   category: ProductCategory;
+   description: text;
+   id: ProductId;
+   imageUrl: text;
+   name: text;
+   priceCents: nat;
+ };
+type PostId = nat;
+type PlanId = nat;
+type Plan = 
+ record {
+   description: text;
+   id: PlanId;
+   name: text;
+   priceCents: nat;
+   rank: nat;
+ };
+type OrderId = nat;
+type OrderError = 
+ variant {
+   invalidQuantity;
+   notRegistered;
+   unavailable: ProductId;
+   unknownProduct: ProductId;
+ };
+type Order = 
+ record {
+   createdAt: Timestamp;
+   id: OrderId;
+   member: MemberId;
+   productId: ProductId;
+   quantity: nat;
+   unitPriceCents: nat;
+ };
+type MembershipError = 
+ variant {
+   invalidInput;
+   notEntitled: PlanId;
+   paymentNotConfirmed;
+   planNotFound: PlanId;
+   subscriptionAlreadyActive;
+ };
+type MemberProgress = 
+ record {
+   level: MemberLevel;
+   nextLevel: opt MemberLevel;
+   points: nat;
+   pointsToNext: nat;
+ };
+type MemberLevel = 
+ record {
+   description: text;
+   name: text;
+   ordinal: nat;
+   pointsRequired: nat;
+ };
+type MemberKit = 
+ record {
+   id: KitId;
+   items: vec KitItem;
+   member: MemberId;
+   minPlanRank: nat;
+   name: text;
+   readiness: KitReadiness;
+ };
+type MemberId = principal;
+type MemberError = 
+ variant {
+   codeTaken;
+   invalidCode;
+   notRegistered;
+ };
+type Member = 
+ record {
+   code: text;
+   email: opt text;
+   id: MemberId;
+   registeredAt: Timestamp;
+ };
+type Lesson = 
+ record {
+   durationMinutes: nat;
+   summary: text;
+   title: text;
+ };
+type KnowledgeId = nat;
+type KnowledgeCategory = 
+ variant {
+   checklists;
+   manutencao;
+   tecnicas;
+   validade;
+ };
+type KnowledgeCard = 
+ record {
+   category: KnowledgeCategory;
+   content: text;
+   id: KnowledgeId;
+   summary: text;
+   title: text;
+ };
+type KitReadiness = 
+ variant {
+   critico;
+   incompleto;
+   pronto;
+ };
+type KitItem = 
+ record {
+   name: text;
+   quantity: nat;
+   ready: bool;
+ };
+type KitId = nat;
+type Error = 
+ variant {
+   AmbiguousAttribute: record {
+                         field: text;
+                         sources: vec text;
+                       };
+   FrontendOriginMismatch: record {
+                             expected: vec text;
+                             got: text;
+                           };
+   FrontendOriginsNotConfigured;
+   MalformedCandid;
+   MissingField: text;
+   MixedSsoSources: record {
+                      otherKeys: vec text;
+                      ssoKeys: vec text;
+                    };
+   NoAttributes;
+   Stale: record {ageNs: nat;};
+   UnknownNonce;
+   UntrustedSsoSource: record {domain: text;};
+ };
+type EmergencyStep = 
+ record {
+   instruction: text;
+   order: nat;
+ };
+type EmergencyPlanId = nat;
+type EmergencyPlan = 
+ record {
+   createdAt: Timestamp;
+   id: EmergencyPlanId;
+   member: MemberId;
+   minPlanRank: nat;
+   steps: vec EmergencyStep;
+   title: text;
+ };
+type CourseId = nat;
+type Course = 
+ record {
+   id: CourseId;
+   lessons: vec Lesson;
+   materials: vec text;
+   minPlanRank: nat;
+   summary: text;
+   title: text;
+ };
+type CommunityPost = 
+ record {
+   author: MemberId;
+   authorCode: text;
+   body: text;
+   createdAt: Timestamp;
+   id: PostId;
+   minPlanRank: nat;
+   title: text;
+ };
+type ClanError = 
+ variant {
+   invalidInput;
+   notEntitled: PlanId;
+   notRegistered;
+   unknownContent: ClanContentId;
+ };
+type ClanContentId = nat;
+type Cell = 
+ record {
+   name: text;
+   value: Value;
+ };
+type CategoryInfo = 
+ record {
+   caption: text;
+   category: ProductCategory;
+   count: nat;
+ };
+service : {
+  _initialize_access_control: () -> ();
+  _internet_identity_sign_in_finish: () -> (Result_10);
+  _internet_identity_sign_in_start: () -> (blob);
+  assignCallerUserRole: (user: principal, role: UserRole) -> ();
+  cancelSubscription: () -> (Result_1);
+  completeRecovery: (code: text) -> (Result_9);
+  confirmSubscriptionPayment: () -> (Result_1);
+  createCommunityPost: (title: text, body: text) -> (Result_8);
+  createEmergencyPlan: (title: text, steps: vec EmergencyStep) -> (Result_7);
+  createKit: (name: text, items: vec KitItem) -> (Result_6);
+  execute: (qJson: text) -> (Result__1) query;
+  getApiDoc: () -> (text) query;
+  getCallerUserRole: () -> (UserRole) query;
+  getCourse: (id: CourseId) -> (Result_5) query;
+  getKnowledge: (id: nat) -> (opt KnowledgeCard) query;
+  getMyProfile: () -> (opt Member) query;
+  getMyProgress: () -> (MemberProgress) query;
+  getMySubscription: () -> (opt Subscription) query;
+  getProduct: (id: nat) -> (opt Product) query;
+  getSurvivalCard: (id: ClanContentId) -> (Result_4) query;
+  isCallerAdmin: () -> (bool) query;
+  listCategories: () -> (vec CategoryInfo) query;
+  listCommunityPosts: () -> (vec CommunityPost) query;
+  listCourses: () -> (vec Course) query;
+  listKnowledge: () -> (vec KnowledgeCard) query;
+  listLevels: () -> (vec MemberLevel) query;
+  listMyEmergencyPlans: () -> (vec EmergencyPlan) query;
+  listMyKits: () -> (vec MemberKit) query;
+  listPlans: () -> (vec Plan) query;
+  listProducts: () -> (vec Product) query;
+  listSurvivalCards: () -> (vec SurvivalCard) query;
+  listTrainings: () -> (vec Training) query;
+  placeOrder: (productId: nat, quantity: nat) -> (Result_3);
+  registerMember: (code: text, email: opt text) -> (Result_2);
+  requestRecoveryCode: (email: text) -> (Result);
+  schema: () -> (text) query;
+  subscribe: (planId: PlanId) -> (Result_1);
+  verifyRecoveryCode: (code: text) -> (Result);
+}

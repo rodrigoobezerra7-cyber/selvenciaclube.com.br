@@ -1,0 +1,213 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "Space Grotesk";
+  src: url("/assets/fonts/SpaceGrotesk.woff2") format("woff2");
+  font-weight: 300 700;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "DM Sans";
+  src: url("/assets/fonts/DMSans.woff2") format("woff2");
+  font-weight: 100 1000;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "JetBrains Mono";
+  src: url("/assets/fonts/JetBrainsMono.woff2") format("woff2");
+  font-weight: 100 800;
+  font-display: swap;
+}
+
+@layer base {
+  :root {
+    /* SELVÊNCIA — Central de Operações (dark-first tactical) */
+    --background: 0.185 0.014 145;
+    --foreground: 0.93 0.012 120;
+    --card: 0.225 0.016 145;
+    --card-foreground: 0.93 0.012 120;
+    --popover: 0.235 0.016 145;
+    --popover-foreground: 0.93 0.012 120;
+    --primary: 0.74 0.17 68;
+    --primary-foreground: 0.19 0.02 68;
+    --secondary: 0.27 0.018 145;
+    --secondary-foreground: 0.86 0.012 120;
+    --muted: 0.26 0.014 145;
+    --muted-foreground: 0.63 0.014 130;
+    --accent: 0.78 0.16 92;
+    --accent-foreground: 0.185 0.02 92;
+    --destructive: 0.58 0.19 27;
+    --destructive-foreground: 0.96 0.008 27;
+    --success: 0.72 0.16 150;
+    --warning: 0.8 0.15 85;
+    --border: 0.32 0.018 145;
+    --input: 0.31 0.018 145;
+    --ring: 0.74 0.17 68;
+
+    --chart-1: 0.74 0.17 68;
+    --chart-2: 0.72 0.16 150;
+    --chart-3: 0.78 0.16 92;
+    --chart-4: 0.58 0.19 27;
+    --chart-5: 0.63 0.014 130;
+
+    --sidebar: 0.165 0.014 145;
+    --sidebar-foreground: 0.9 0.012 120;
+    --sidebar-primary: 0.74 0.17 68;
+    --sidebar-primary-foreground: 0.19 0.02 68;
+    --sidebar-accent: 0.26 0.014 145;
+    --sidebar-accent-foreground: 0.9 0.012 120;
+    --sidebar-border: 0.3 0.018 145;
+    --sidebar-ring: 0.74 0.17 68;
+
+    --radius: 0.25rem;
+
+    --font-display: "Space Grotesk", system-ui, sans-serif;
+    --font-body: "DM Sans", system-ui, sans-serif;
+    --font-mono: "JetBrains Mono", ui-monospace, monospace;
+
+    --gradient-primary: linear-gradient(
+      135deg,
+      oklch(0.78 0.17 68),
+      oklch(0.66 0.16 52)
+    );
+    --gradient-subtle: linear-gradient(
+      180deg,
+      oklch(0.24 0.016 145),
+      oklch(0.2 0.014 145)
+    );
+    --transition-smooth: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .dark {
+    --background: 0.185 0.014 145;
+    --foreground: 0.93 0.012 120;
+    --card: 0.225 0.016 145;
+    --card-foreground: 0.93 0.012 120;
+    --popover: 0.235 0.016 145;
+    --popover-foreground: 0.93 0.012 120;
+    --primary: 0.74 0.17 68;
+    --primary-foreground: 0.19 0.02 68;
+    --secondary: 0.27 0.018 145;
+    --secondary-foreground: 0.86 0.012 120;
+    --muted: 0.26 0.014 145;
+    --muted-foreground: 0.63 0.014 130;
+    --accent: 0.78 0.16 92;
+    --accent-foreground: 0.185 0.02 92;
+    --destructive: 0.58 0.19 27;
+    --destructive-foreground: 0.96 0.008 27;
+    --success: 0.72 0.16 150;
+    --warning: 0.8 0.15 85;
+    --border: 0.32 0.018 145;
+    --input: 0.31 0.018 145;
+    --ring: 0.74 0.17 68;
+    --sidebar: 0.165 0.014 145;
+    --sidebar-foreground: 0.9 0.012 120;
+    --sidebar-primary: 0.74 0.17 68;
+    --sidebar-primary-foreground: 0.19 0.02 68;
+    --sidebar-accent: 0.26 0.014 145;
+    --sidebar-accent-foreground: 0.9 0.012 120;
+    --sidebar-border: 0.3 0.018 145;
+    --sidebar-ring: 0.74 0.17 68;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    color-scheme: dark;
+  }
+
+  body {
+    @apply bg-background font-body text-foreground antialiased;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-display;
+  }
+}
+
+@layer utilities {
+  .font-display {
+    font-family: var(--font-display);
+  }
+  .font-body {
+    font-family: var(--font-body);
+  }
+  .font-mono {
+    font-family: var(--font-mono);
+  }
+  .bg-gradient-primary {
+    background-image: var(--gradient-primary);
+  }
+  .bg-gradient-subtle {
+    background-image: var(--gradient-subtle);
+  }
+  .transition-smooth {
+    transition: var(--transition-smooth);
+  }
+  .label-tactical {
+    @apply font-mono text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground;
+  }
+  .grid-overlay {
+    background-image: linear-gradient(
+        to right,
+        oklch(0.32 0.018 145 / 0.35) 1px,
+        transparent 1px
+      ),
+      linear-gradient(
+        to bottom,
+        oklch(0.32 0.018 145 / 0.35) 1px,
+        transparent 1px
+      );
+    background-size: 48px 48px;
+  }
+  .hazard-stripe {
+    background-image: repeating-linear-gradient(
+      -45deg,
+      oklch(0.74 0.17 68) 0 12px,
+      oklch(0.19 0.02 68) 12px 24px
+    );
+  }
+  .text-glow-amber {
+    text-shadow: 0 0 24px oklch(0.74 0.17 68 / 0.35);
+  }
+  .corner-brackets {
+    position: relative;
+  }
+  .corner-brackets::before,
+  .corner-brackets::after {
+    content: "";
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    border-color: oklch(0.74 0.17 68 / 0.6);
+  }
+  .corner-brackets::before {
+    top: 0;
+    left: 0;
+    border-top: 1px solid;
+    border-left: 1px solid;
+  }
+  .corner-brackets::after {
+    bottom: 0;
+    right: 0;
+    border-bottom: 1px solid;
+    border-right: 1px solid;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

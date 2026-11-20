@@ -1,0 +1,493 @@
+// Version: 4.0.0
+type AccessControlState__201339279 =
+  {
+    var adminAssigned : Bool;
+    userRoles : Map__175655829<Principal, UserRole__91647283>
+  };
+type BookingRequest__244989189 =
+  {
+    contact : Text;
+    createdAt : Time__947132877;
+    handled : Bool;
+    id : Nat;
+    message : Text;
+    name : Text;
+    preferredTime : Text;
+    service : Text
+  };
+type BookingRequest__393765754 =
+  {
+    contact : Text;
+    createdAt : Int;
+    handled : Bool;
+    id : Nat;
+    message : Text;
+    name : Text;
+    preferredTime : Text;
+    service : Text
+  };
+type BusinessInfo__218565759 =
+  {
+    address : Text;
+    email : Text;
+    name : Text;
+    openingHours : [DayHours__465508174];
+    phone : Text;
+    tagline : Text
+  };
+type BusinessInfo__381953577 =
+  {
+    address : Text;
+    email : Text;
+    name : Text;
+    openingHours : [DayHours__1028874566];
+    phone : Text;
+    tagline : Text
+  };
+type ClanContentId__890287570 = Nat;
+type CommunityPost__166984920 =
+  {
+    author : Principal;
+    authorCode : Text;
+    body : Text;
+    createdAt : Int;
+    id : Nat;
+    minPlanRank : Nat;
+    title : Text
+  };
+type CommunityPost__207108696 =
+  {
+    author : MemberId__521177989;
+    authorCode : Text;
+    body : Text;
+    createdAt : Timestamp__695951621;
+    id : PostId__966735017;
+    minPlanRank : Nat;
+    title : Text
+  };
+type CourseId__172240815 = Nat;
+type Course__296793990 =
+  {
+    id : Nat;
+    lessons : [Lesson__695337362];
+    materials : [Text];
+    minPlanRank : Nat;
+    summary : Text;
+    title : Text
+  };
+type Course__999285621 =
+  {
+    id : CourseId__172240815;
+    lessons : [Lesson__610976344];
+    materials : [Text];
+    minPlanRank : Nat;
+    summary : Text;
+    title : Text
+  };
+type Data__1061330525<K, V> =
+  {var count : Nat__565224867; kvs : [var ?(K, V)]};
+type DayHours__1028874566 = {days : Text; hours : Text};
+type DayHours__465508174 = {days : Text; hours : Text};
+type EmergencyPlanId__583561134 = Nat;
+type EmergencyPlan__333542561 =
+  {
+    createdAt : Timestamp__695951621;
+    id : EmergencyPlanId__583561134;
+    member : MemberId__521177989;
+    minPlanRank : Nat;
+    steps : [EmergencyStep__33928446];
+    title : Text
+  };
+type EmergencyPlan__909998297 =
+  {
+    createdAt : Int;
+    id : Nat;
+    member : Principal;
+    minPlanRank : Nat;
+    steps : [EmergencyStep__660245470];
+    title : Text
+  };
+type EmergencyStep__33928446 = {instruction : Text; order : Nat};
+type EmergencyStep__660245470 = {instruction : Text; order : Nat};
+type GalleryImage__248228259 = {caption : Text; id : Nat; url : Text};
+type GalleryImage__596546865 = {caption : Text; id : Nat; url : Text};
+type Int__326488490 = Int__616954475;
+type Int__616954475 = Int;
+type Internal__1060388275<K, V> =
+  {children : [var ?Node__1010487028<K, V>]; data : Data__1061330525<K, V>};
+type KitId__130372011 = Nat;
+type KitItem__105450437 = {name : Text; quantity : Nat; ready : Bool};
+type KitItem__180492451 = {name : Text; quantity : Nat; ready : Bool};
+type KitReadiness__193876827 = {#critico; #incompleto; #pronto};
+type KitReadiness__669841203 = {#critico; #incompleto; #pronto};
+type KnowledgeCard__350486336 =
+  {
+    category : KnowledgeCategory__956289803;
+    content : Text;
+    id : Nat;
+    summary : Text;
+    title : Text
+  };
+type KnowledgeCard__414475312 =
+  {
+    category : KnowledgeCategory__286049900;
+    content : Text;
+    id : Nat;
+    summary : Text;
+    title : Text
+  };
+type KnowledgeCard__466169364 =
+  {
+    category : KnowledgeCategory__614353861;
+    content : Text;
+    id : KnowledgeId__827014544;
+    summary : Text;
+    title : Text
+  };
+type KnowledgeCategory__286049900 =
+  {#checklists; #manutencao; #tecnicas; #validade};
+type KnowledgeCategory__614353861 =
+  {#checklists; #manutencao; #tecnicas; #validade};
+type KnowledgeCategory__956289803 =
+  {#checklists; #manutencao; #tecnicas; #validade};
+type KnowledgeId__827014544 = Nat;
+type Leaf__8515789<K, V> = {data : Data__1061330525<K, V>};
+type Lesson__610976344 =
+  {durationMinutes : Nat; summary : Text; title : Text};
+type Lesson__695337362 =
+  {durationMinutes : Nat; summary : Text; title : Text};
+type Map__175655829<K, V> = Map__975833162<K, V>;
+type Map__925935234<K, V> =
+  {var root : Node__1010487028<K, V>; var size : Nat__565224867};
+type Map__975833162<K, V> = Map__925935234<K, V>;
+type MemberId__521177989 = Principal;
+type MemberKit__1070465400 =
+  {
+    id : Nat;
+    items : [KitItem__180492451];
+    member : Principal;
+    minPlanRank : Nat;
+    name : Text;
+    readiness : KitReadiness__669841203
+  };
+type MemberKit__451809708 =
+  {
+    id : KitId__130372011;
+    items : [KitItem__105450437];
+    member : MemberId__521177989;
+    minPlanRank : Nat;
+    name : Text;
+    readiness : KitReadiness__193876827
+  };
+type MemberLevel__457946205 =
+  {description : Text; name : Text; ordinal : Nat; pointsRequired : Nat};
+type MemberLevel__550584394 =
+  {description : Text; name : Text; ordinal : Nat; pointsRequired : Nat};
+type Member__217220054 =
+  {code : Text; email : ?Text; id : Principal; registeredAt : Int};
+type Member__630432159 =
+  {code : Text; email : ?Text; id : Principal; registeredAt : Int};
+type Member__942156237 =
+  {
+    code : Text;
+    email : ?Text;
+    id : MemberId__521177989;
+    registeredAt : Timestamp__695951621
+  };
+type Nat__565224867 = Nat__920180692;
+type Nat__920180692 = Nat;
+type NewActor__763220915 =
+  {
+    accessControlState : AccessControlState__201339279;
+    courses : Map__175655829<Nat, Course__296793990>;
+    emergencyPlans : Map__175655829<Nat, EmergencyPlan__909998297>;
+    kitCounter : {var value : Nat};
+    kits : Map__175655829<Nat, MemberKit__1070465400>;
+    knowledge : Map__175655829<Nat, KnowledgeCard__350486336>;
+    levels : Map__175655829<Nat, MemberLevel__457946205>;
+    members : Map__175655829<Principal, Member__217220054>;
+    orderCounter : {var value : Nat};
+    orders : Map__175655829<Nat, Order__536991019>;
+    planCounter : {var value : Nat};
+    plans : Map__175655829<Nat, Plan__895422203>;
+    points : Map__175655829<Principal, Nat>;
+    postCounter : {var value : Nat};
+    posts : Map__175655829<Nat, CommunityPost__166984920>;
+    products : Map__175655829<Nat, Product__331678797>;
+    recoveries : Map__175655829<Principal, RecoveryRequest__547855026>;
+    subscriptions : Map__175655829<Principal, Subscription__536841793>;
+    survivalCards : Map__175655829<Nat, SurvivalCard__972345875>;
+    trainings : Map__175655829<Nat, Training__538318797>
+  };
+type NewActor__777719711 =
+  {
+    accessControlState : AccessControlState__201339279;
+    knowledge : Map__175655829<Nat, KnowledgeCard__414475312>;
+    members : Map__175655829<Principal, Member__630432159>;
+    orderCounter : {var value : Nat};
+    orders : Map__175655829<Nat, Order__323832954>;
+    products : Map__175655829<Nat, Product__1028881555>;
+    recoveries : Map__175655829<Principal, RecoveryRequest__803564283>
+  };
+type Node__1010487028<K, V> =
+  {#internal : Internal__1060388275<K, V>; #leaf : Leaf__8515789<K, V>};
+type OldActor__585844889 =
+  {
+    accessControlState : AccessControlState__201339279;
+    knowledge : Map__175655829<Nat, KnowledgeCard__350486336>;
+    members : Map__175655829<Principal, Member__217220054>;
+    orderCounter : {var value : Nat};
+    orders : Map__175655829<Nat, Order__536991019>;
+    products : Map__175655829<Nat, Product__331678797>;
+    recoveries : Map__175655829<Principal, RecoveryRequest__547855026>
+  };
+type OldActor__653948079 =
+  {
+    accessControlState : AccessControlState__201339279;
+    bookingRequests : Map__175655829<Nat, BookingRequest__393765754>;
+    businessInfo : BusinessInfo__381953577;
+    gallery : [GalleryImage__248228259];
+    var nextRequestId : Nat;
+    services : [Service__203928246];
+    team : [TeamMember__1046203588];
+    testimonials : [Testimonial__529197716]
+  };
+type OrderId__1025014451 = Nat;
+type Order__1002413030 =
+  {
+    createdAt : Timestamp__695951621;
+    id : OrderId__1025014451;
+    member : MemberId__521177989;
+    productId : ProductId__112770645;
+    quantity : Nat;
+    unitPriceCents : Nat
+  };
+type Order__323832954 =
+  {
+    createdAt : Int;
+    id : Nat;
+    member : Principal;
+    productId : Nat;
+    quantity : Nat;
+    unitPriceCents : Nat
+  };
+type Order__536991019 =
+  {
+    createdAt : Int;
+    id : Nat;
+    member : Principal;
+    productId : Nat;
+    quantity : Nat;
+    unitPriceCents : Nat
+  };
+type PlanId__697717049 = Nat;
+type Plan__114761497 =
+  {
+    description : Text;
+    id : PlanId__697717049;
+    name : Text;
+    priceCents : Nat;
+    rank : Nat
+  };
+type Plan__895422203 =
+  {description : Text; id : Nat; name : Text; priceCents : Nat; rank : Nat};
+type PostId__966735017 = Nat;
+type ProductCategory__109728895 =
+  {#binoculos; #camisetas; #facas; #lanternas};
+type ProductCategory__177356701 =
+  {#binoculos; #camisetas; #facas; #lanternas};
+type ProductCategory__845690969 =
+  {#binoculos; #camisetas; #facas; #lanternas};
+type ProductId__112770645 = Nat;
+type Product__1028881555 =
+  {
+    available : Bool;
+    category : ProductCategory__177356701;
+    description : Text;
+    id : Nat;
+    imageUrl : Text;
+    name : Text;
+    priceCents : Nat
+  };
+type Product__331678797 =
+  {
+    available : Bool;
+    category : ProductCategory__109728895;
+    description : Text;
+    id : Nat;
+    imageUrl : Text;
+    name : Text;
+    priceCents : Nat
+  };
+type Product__541677481 =
+  {
+    available : Bool;
+    category : ProductCategory__845690969;
+    description : Text;
+    id : ProductId__112770645;
+    imageUrl : Text;
+    name : Text;
+    priceCents : Nat
+  };
+type RecoveryRequest__330649126 =
+  {attempts : Nat; code : Text; expiresAt : Timestamp__695951621};
+type RecoveryRequest__547855026 =
+  {attempts : Nat; code : Text; expiresAt : Int};
+type RecoveryRequest__803564283 =
+  {attempts : Nat; code : Text; expiresAt : Int};
+type Service__1054196247 =
+  {description : Text; duration : Text; id : Nat; name : Text; price : Text};
+type Service__203928246 =
+  {description : Text; duration : Text; id : Nat; name : Text; price : Text};
+type SubscriptionStatus__26116706 = {#active; #cancelled; #pending};
+type SubscriptionStatus__786300220 = {#active; #cancelled; #pending};
+type Subscription__536841793 =
+  {
+    member : Principal;
+    pendingPlan : ?Nat;
+    planId : Nat;
+    renewsAt : Int;
+    startedAt : Int;
+    status : SubscriptionStatus__786300220
+  };
+type Subscription__976151548 =
+  {
+    member : MemberId__521177989;
+    pendingPlan : ?PlanId__697717049;
+    planId : PlanId__697717049;
+    renewsAt : Timestamp__695951621;
+    startedAt : Timestamp__695951621;
+    status : SubscriptionStatus__26116706
+  };
+type SurvivalCard__464297562 =
+  {
+    content : Text;
+    id : ClanContentId__890287570;
+    minPlanRank : Nat;
+    summary : Text;
+    title : Text
+  };
+type SurvivalCard__972345875 =
+  {content : Text; id : Nat; minPlanRank : Nat; summary : Text; title : Text};
+type TeamMember__1046203588 =
+  {bio : Text; id : Nat; name : Text; photo : Text; role : Text};
+type TeamMember__355003584 =
+  {bio : Text; id : Nat; name : Text; photo : Text; role : Text};
+type Testimonial__180620276 = {author : Text; id : Nat; quote : Text};
+type Testimonial__529197716 = {author : Text; id : Nat; quote : Text};
+type Time__504000406 = Int__326488490;
+type Time__947132877 = Time__504000406;
+type Timestamp__695951621 = Int;
+type TrainingId__310340510 = Nat;
+type Training__451673736 =
+  {
+    content : Text;
+    id : TrainingId__310340510;
+    minPlanRank : Nat;
+    summary : Text;
+    title : Text
+  };
+type Training__538318797 =
+  {content : Text; id : Nat; minPlanRank : Nat; summary : Text; title : Text};
+type UserRole__91647283 = {#admin; #guest; #user};
+{
+  "20250101_000000_Init" :
+    {} ->
+      {
+        accessControlState : AccessControlState__201339279;
+        bookingRequests : Map__175655829<Nat, BookingRequest__244989189>;
+        businessInfo : BusinessInfo__218565759;
+        gallery : [GalleryImage__596546865];
+        var nextRequestId : Nat;
+        services : [Service__1054196247];
+        team : [TeamMember__355003584];
+        testimonials : [Testimonial__180620276]
+      };
+  "20261120_120000" : (old : OldActor__653948079) -> NewActor__777719711;
+  "20261201_120000" : (old : OldActor__585844889) -> NewActor__763220915
+}
+actor  {
+  stable accessControlState :
+    {
+      var adminAssigned : Bool;
+      userRoles : Map__175655829<Principal, UserRole__91647283>
+    };
+  stable courses :
+    {
+      var root : Node__1010487028<CourseId__172240815, Course__999285621>;
+      var size : Nat__565224867
+    };
+  stable emergencyPlans :
+    {
+      var root :
+        Node__1010487028<EmergencyPlanId__583561134, EmergencyPlan__333542561>;
+      var size : Nat__565224867
+    };
+  stable kitCounter : {var value : Nat};
+  stable kits :
+    {
+      var root : Node__1010487028<KitId__130372011, MemberKit__451809708>;
+      var size : Nat__565224867
+    };
+  stable knowledge :
+    {
+      var root : Node__1010487028<Nat, KnowledgeCard__466169364>;
+      var size : Nat__565224867
+    };
+  stable levels :
+    {
+      var root : Node__1010487028<Nat, MemberLevel__550584394>;
+      var size : Nat__565224867
+    };
+  stable members :
+    {
+      var root : Node__1010487028<Principal, Member__942156237>;
+      var size : Nat__565224867
+    };
+  stable orderCounter : {var value : Nat};
+  stable orders :
+    {
+      var root : Node__1010487028<Nat, Order__1002413030>;
+      var size : Nat__565224867
+    };
+  stable planCounter : {var value : Nat};
+  stable plans :
+    {
+      var root : Node__1010487028<PlanId__697717049, Plan__114761497>;
+      var size : Nat__565224867
+    };
+  stable points :
+    {var root : Node__1010487028<Principal, Nat>; var size : Nat__565224867};
+  stable postCounter : {var value : Nat};
+  stable posts :
+    {
+      var root : Node__1010487028<PostId__966735017, CommunityPost__207108696>;
+      var size : Nat__565224867
+    };
+  stable products :
+    {
+      var root : Node__1010487028<Nat, Product__541677481>;
+      var size : Nat__565224867
+    };
+  stable recoveries :
+    {
+      var root : Node__1010487028<Principal, RecoveryRequest__330649126>;
+      var size : Nat__565224867
+    };
+  stable subscriptions :
+    {
+      var root : Node__1010487028<Principal, Subscription__976151548>;
+      var size : Nat__565224867
+    };
+  stable survivalCards :
+    {
+      var root :
+        Node__1010487028<ClanContentId__890287570, SurvivalCard__464297562>;
+      var size : Nat__565224867
+    };
+  stable trainings :
+    {
+      var root : Node__1010487028<TrainingId__310340510, Training__451673736>;
+      var size : Nat__565224867
+    }
+};
